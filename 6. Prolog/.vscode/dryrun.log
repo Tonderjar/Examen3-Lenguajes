@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/diego/Desktop/Lenguajes/Examen3/Examen3-Lenguajes/6. Prolog'
+(cd Utils/; make)  
+kotlinc -cp Utils/Utils.jar Prolog.kt
+make: Leaving directory '/home/diego/Desktop/Lenguajes/Examen3/Examen3-Lenguajes/6. Prolog'
+ 
