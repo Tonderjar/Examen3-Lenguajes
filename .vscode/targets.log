@@ -1,3 +1,4 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -5,7 +6,7 @@
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Aug  2 09:55:15 2022
+# Make data base, printed on Wed Aug  3 09:41:32 2022
 
 # Variables
 
@@ -47,8 +48,8 @@ _ = /usr/share/code/code
 JOURNAL_STREAM = 8:46313
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
+# makefile
+MAKEFILE_LIST := 
 # automatic
 @F = $(notdir $@)
 # environment
@@ -150,15 +151,13 @@ USER = diego
 # environment
 LC_MONETARY = es_VE.UTF-8
 # makefile
-.DEFAULT_GOAL := JFWKt.class
+.DEFAULT_GOAL := 
 # environment
 XDG_CURRENT_DESKTOP = Unity
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
 LC_TELEPHONE = es_VE.UTF-8
-# makefile (from 'Makefile', line 1)
-KC = kotlinc
 # default
 MAKE_COMMAND := make
 # default
@@ -214,7 +213,7 @@ LANG = C
 # environment
 VSCODE_PID = 126093
 # variable set hash-table stats:
-# Load=102/1024=10%, Rehash=0, Collisions=17/127=13%
+# Load=101/1024=10%, Rehash=0, Collisions=17/123=14%
 
 # Pattern-specific Variable Values
 
@@ -222,9 +221,9 @@ VSCODE_PID = 126093
 
 # Directories
 
-# . (device 2050, inode 7734415): 7 files, no impossibilities.
+# . (device 2050, inode 7734415): 6 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 6 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -240,17 +239,18 @@ all:
 #  File has not been updated.
 
 # Not a target:
-JFW.kt:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-02 09:54:37.171424985
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
 
 # Not a target:
 .DEFAULT:
@@ -258,37 +258,29 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
-clean:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 6):
-	rm -rf *.class META-INF
-
-JFWKt.class: JFW.kt
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 4):
-	$(KC) JFW.kt
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
 
 # files hash-table stats:
-# Load=7/1024=1%, Rehash=0, Collisions=0/18=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 14 / storage = 120 B / avg = 8 B
-# current buf: size = 8162 B / used = 120 B / count = 14 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 14 / storage = 123 B / avg = 8 B
+# current buf: size = 8162 B / used = 123 B / count = 14 / avg = 8 B
 
-# strcache performance: lookups = 21 / hit rate = 33%
+# strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
+# Load=14/8192=0%, Rehash=0, Collisions=1/17=6%
+# Finished Make data base on Wed Aug  3 09:41:32 2022
+
  
 make: *** No rule to make target 'all'.  Stop.
 
-# Load=14/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Tue Aug  2 09:55:15 2022
-
- 
