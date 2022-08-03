@@ -2,6 +2,16 @@ package lib
 
 object Utilidades{
 
+    fun args(argumentos: List<String>, ind: Int): String{
+        var strAux1 = argumentos[ind]
+        var strAux2 = argumentos[ind+1]
+        strAux1 = strAux1.replace(",", "")
+        strAux1 = strAux1.replace("(", " ")
+        strAux2 = strAux2.replace(")", "")
+        val strAux = strAux1 + " " + strAux2
+        return strAux
+    }
+
     fun tipoDef(args: List<String>) : Int {
         if(args.size == 1){
             return -1

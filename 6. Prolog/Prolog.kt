@@ -44,14 +44,9 @@ fun main() {
             
             //Definicion de hechos como padre(a, b)
             } else if(cond == 0){
-                var strAux1 = argumentos[1]
-                var strAux2 = argumentos[2]
-                strAux1 = strAux1.replace(",", "")
-                strAux1 = strAux1.replace("(", " ")
-                strAux2 = strAux2.replace(")", "")
-                val strAux = strAux1 + " " + strAux2
-                lHechos.add(strAux.split(" "))
-                hechos.put(strAux, nHechos)
+                var args = Utilidades.args(argumentos, 1)
+                hechos.put(args, nHechos)
+                lHechos.add(args.split(" "))
                 nHechos++
                 println(lHechos)
 
@@ -67,20 +62,16 @@ fun main() {
             } else {
                 var auxReglas = ""
                 for(i in 0..((argumentos.size-1)/2)-1){
-                    var strAux1 = argumentos[2*i+1]
-                    var strAux2 = argumentos[2*i+2]
-                    strAux1 = strAux1.replace(",", "")
-                    strAux1 = strAux1.replace("(", " ")
-                    strAux2 = strAux2.replace(")", "")
-                    val strAux = strAux1 + " " + strAux2
-                    auxReglas = auxReglas + strAux + " "
-                    if(!auxReglas.split(" ")[1][0].isUpperCase()){
-                        variables.add(strAux[1].toString())
+                    var args = Utilidades.args(argumentos, 2*i+1)
+                    auxReglas = auxReglas + args + " "
+                    if(args.split(" ")[1][0].isUpperCase()){
+                        variables.add(args.split(" ")[1])
                     }
-                    if(!auxReglas.split(" ")[2][0].isUpperCase()){
-                        variables.add(strAux[2].toString())
+                    if(args.split(" ")[2][0].isUpperCase()){
+                        variables.add(args.split(" ")[2])
                     }
                 }
+                auxReglas.dropLast(1)
                 lReglas.add(auxReglas.split(" "))
                 reglas.put(auxReglas, nReglas)
                 nReglas++
@@ -99,14 +90,9 @@ fun main() {
             //Si ambos argumentos del predicado son constantes
             } else if(cond == 0){ 
                 var ind = -1
-                var strAux1 = argumentos[1]
-                var strAux2 = argumentos[2]
-                strAux1 = strAux1.replace(",", "")
-                strAux1 = strAux1.replace("(", " ")
-                strAux2 = strAux2.replace(")", "")
-                var strAux = strAux1 + " " + strAux2
+                var args = Utilidades.args(argumentos, 1)
                 try{
-                    ind = hechos.getValue(strAux)
+                    ind = hechos.getValue(args)
                 } catch(error: java.util.NoSuchElementException){
                     println("false")
                 }
@@ -116,31 +102,72 @@ fun main() {
 
             //Si solo el primer argumento es variable
             } else if(cond == 1){
-                var soluciones = obtenerSoluciones(argumentos, lHechos)
+                var arg = Utilidades.args(argumentos, 1)
+                var args = arg.split(" ")
+                var soluciones = obtenerSoluciones1(args, lHechos)
                 if(soluciones.size != 0){
                     println("Satisfacible cuando '" + args[1] + "' = '" + soluciones[0] + "'. Que desea hacer?")
                     soluciones.removeAt(0)
-                }
 
-                ////////////Funcion args falta!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-                input = readLine()!!
-                while(input == "RECHAZAR"){
-                    if(soluciones.size != 0){
-                        println("Satisfacible cuando '" + args[1] + "' = '" + soluciones[0] + "'. Que desea hacer?")
-                        soluciones.removeAt(0)
-                    } else {
-                        println("No es satisfacible")
-                        break
-                    }
+                    //Pido una respuesta a la primera solucion
                     input = readLine()!!
+                    while(input == "RECHAZAR"){
+                        if(soluciones.size != 0){
+                            println("Satisfacible cuando '" + args[1] + "' = '" + soluciones[0] + "'. Que desea hacer?")
+                            soluciones.removeAt(0)
+                        } else {
+                            println("No es satisfacible")
+                            break
+                        }
+                        input = readLine()!!
+                    }
                 }
+
             //Si solo el segundo argumento es variable
             } else if(cond == 2){
+                var arg = Utilidades.args(argumentos, 1)
+                var args = arg.split(" ")
+                var soluciones = obtenerSoluciones2(args, lHechos)
+                if(soluciones.size != 0){
+                    println("Satisfacible cuando '" + args[2] + "' = '" + soluciones[0] + "'. Que desea hacer?")
+                    soluciones.removeAt(0)
+                    
+                    //Pido una respuesta a la primera solucion
+                    input = readLine()!!
+                    while(input == "RECHAZAR"){
+                        if(soluciones.size != 0){
+                            println("Satisfacible cuando '" + args[2] + "' = '" + soluciones[0] + "'. Que desea hacer?")
+                            soluciones.removeAt(0)
+                        } else {
+                            println("No es satisfacible")
+                            break
+                        }
+                        input = readLine()!!
+                    }
+                }
 
             //Si ambos argumentos son variables
             } else {
-
+                var arg = Utilidades.args(argumentos, 1)
+                var args = arg.split(" ")
+                var soluciones = obtenerSoluciones3(args, lHechos)
+                if(soluciones.size != 0){
+                    println("Satisfacible cuando '"+args[1]+"' = '"+soluciones[0][1]+"' y '"+args[2]+"' = '"+soluciones[0][2]+"'. Que desea hacer?")
+                    soluciones.removeAt(0)
+                    
+                    //Pido una respuesta a la primera solucion
+                    input = readLine()!!
+                    while(input == "RECHAZAR"){
+                        if(soluciones.size != 0){
+                            println("Satisfacible cuando '"+args[1]+"' = '"+soluciones[0][1]+"' y '"+args[2]+"' = '"+soluciones[0][2]+"'. Que desea hacer?")
+                            soluciones.removeAt(0)
+                        } else {
+                            println("No es satisfacible")
+                            break
+                        }
+                        input = readLine()!!
+                    }
+                }
             }
         } else if(argumentos[0] == "SALIR"){
             s = false

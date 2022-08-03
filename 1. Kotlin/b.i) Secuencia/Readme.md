@@ -2,7 +2,7 @@
 
 ##  Para compilar:
 
-    Para compilar solo debe dirigirse al directorio "/b.i) Secuencia" donde encontrara el shell script para la ejecucion del prrograma. Una vez en dicho directorio, correr el comando "make" compilara todos los archivos necesarios.
+    Para compilar solo debe dirigirse al directorio "/b.i) Secuencia" donde encontrara el shell script para la ejecucion del programa. Una vez en dicho directorio, correr el comando "make" compilara todos los archivos necesarios.
 
 ## Para ejecutar:
 
