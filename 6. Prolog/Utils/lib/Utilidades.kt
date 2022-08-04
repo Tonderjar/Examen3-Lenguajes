@@ -46,7 +46,12 @@ object Utilidades{
     }
 
     fun tipoAsk(args: List<String>) : Int {
-        return 1
+        var argumentos = args(args, 1).split(" ")
+        if(!argumentos[1][0].isUpperCase() && !argumentos[2][0].isUpperCase()){
+            return 0
+        } else {
+            return 1
+        }
     }
 
     fun obtenerSoluciones1(args: List<String>, 
@@ -60,13 +65,13 @@ object Utilidades{
             }
         }
         for(regla in lReglas){
+            var sol = mutableListOf<String>()
             if(regla[0] == args[0]){
-                var sol = mutableListOf<String>()
-                sol = fReglas1(args, lHechos, 1, regla, sol)
+                sol = fReglas1(args, args[2], lHechos, regla.size/3, regla, sol)
             }
-            for(solu in sol){
-                if(!soluciones.contains(solu)){
-                    soluciones.add(solu)
+            for(s in sol){
+                if(!soluciones.contains(s)){
+                    soluciones.add(s)
                 }
             }
         }
@@ -83,29 +88,47 @@ object Utilidades{
         return soluciones
     }
  
-    fun fReglas1(args: List<String>, 
+    fun fReglas1(args: List<String>,
+                 obj: String, 
                  lHechos: MutableList<List<String>>,  
                  ind: Int,
                  regla: List<String>,
                  solu: MutableList<String>) : MutableList<String>{
-
-        var sol = mutableListOf<String>()
-        if(ind == regla.size/3){
+        
+        if(ind > 1){
+            var sol = mutableListOf<String>()
             for(hecho in lHechos){
-                if(hecho[0] == args[3*(ind-1)]){    
-                    solu = fHechos(listOf(args[args.size-3], args[args.size-2], args[args.size-1]), hecho, sol)
+                if(hecho[0] == regla[3*(ind-1)]){
+                    sol = fHechos(listOf(regla[3*(ind-1)], regla[3*(ind-1)+1], obj), hecho, sol)
+                }
+            }
+            if(ind < 3){
+                return sol
+            }
+            var sol2 = mutableListOf<String>()
+            for(elem in sol){
+                sol2 = fReglas1(args, elem, lHechos, ind-1, regla, sol2)
+                for(elem2 in sol2){
+                    if(!solu.contains(elem2)){
+                        solu.add(elem2)
+                    }
                 }
             }
             return solu
         } else{
-            if(solu.size == 0){
-                return solu
-            }
-            for(elem in solu){
-
-            }
+            // var sol = mutableListOf<String>()
+            // for(hecho in lHechos){
+            //     if(hecho[0] == regla[3*(ind-1)]){    
+            //         sol = fHechos(listOf(regla[3*(ind-1)], regla[3*(ind-1)+1], obj), hecho, sol)
+            //     }
+            // }
+            // for(elem in sol){
+            //     if(!sol.contains(elem)){
+            //         solu.add(elem)
+            //     }
+            // }
+            return solu
         }
-
         //sol = fHechos(listOf(args[3*(ind-1)], args[3*(ind-1)+1], args[3*(ind-1)+2]), lHechos)
     }
     

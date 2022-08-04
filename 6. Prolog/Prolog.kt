@@ -4,13 +4,8 @@ import kotlin.io.*
 fun main() {
 
     var s = true
-    var atomos = mutableMapOf<String, Int>()
-    var nAtomos = 0
 
     var variables = mutableSetOf<String>()
-
-    var estructuras = mutableMapOf<String, Int>()
-    var nEstructuras = 0
 
     var hechos = mutableMapOf<String, Int>()
     var nHechos = 0
@@ -22,7 +17,7 @@ fun main() {
 
     var lReglas = mutableListOf<List<String>>()
 
-    var cond = -1
+    var cond : Int
 
     while(s){
         
@@ -81,7 +76,6 @@ fun main() {
 
             //Verifico si la entrada es valida para consultas
             cond = Utilidades.tipoAsk(argumentos)
-
             //Si la consulta es incorrecta
             if(cond == -1){
                 println("Consulta incorrecta")
@@ -104,21 +98,37 @@ fun main() {
                 var arg = Utilidades.args(argumentos, 1)
                 var args = arg.split(" ")
                 var soluciones = Utilidades.obtenerSoluciones1(args, lHechos, lReglas)
+                for(elem in soluciones){
+                    lHechos.add(listOf(args[0], elem, args[2]))
+                }
+                println(lHechos)
                 if(soluciones.size != 0){
                     println("Satisfacible cuando '" + args[1] + "' = '" + soluciones[0] + "'. Que desea hacer?")
                     soluciones.removeAt(0)
 
                     //Pido una respuesta a la primera solucion
                     input = readLine()!!
-                    while(input == "RECHAZAR"){
-                        if(soluciones.size != 0){
-                            println("Satisfacible cuando '" + args[1] + "' = '" + soluciones[0] + "'. Que desea hacer?")
-                            soluciones.removeAt(0)
-                        } else {
-                            println("No es satisfacible")
-                            break
-                        }
+                    while(input != "RECHAZAR" && input != "ACEPTAR"){
+                        println("Entrada incorrecta. Que desea hacer?")
                         input = readLine()!!
+                    }
+                    if(input == "ACEPTAR"){
+                        println("Consulta aceptada.")
+                    } else {
+                        while(input == "RECHAZAR"){
+                            if(soluciones.size != 0){
+                                println("Satisfacible cuando '" + args[1] + "' = '" + soluciones[0] + "'. Que desea hacer?")
+                                soluciones.removeAt(0)
+                            } else {
+                                println("No es satisfacible")
+                                break
+                            }
+                            input = readLine()!!
+                            while(input != "RECHAZAR" && input != "ACEPTAR"){
+                                println("Entrada incorrecta. Que desea hacer?")
+                                input = readLine()!!
+                            }
+                        }
                     }
                 }
 

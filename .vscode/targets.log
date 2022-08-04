@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug  3 09:41:32 2022
+# Make data base, printed on Wed Aug  3 18:20:21 2022
 
 # Variables
 
@@ -97,7 +99,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 126093
+GIO_LAUNCHED_DESKTOP_FILE_PID = 226677
 # automatic
 %F = $(notdir $%)
 # environment
@@ -211,7 +213,7 @@ LC_ADDRESS = es_VE.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 126093
+VSCODE_PID = 226677
 # variable set hash-table stats:
 # Load=101/1024=10%, Rehash=0, Collisions=17/123=14%
 
@@ -221,9 +223,9 @@ VSCODE_PID = 126093
 
 # Directories
 
-# . (device 2050, inode 7734415): 6 files, no impossibilities.
+# . (device 2050, inode 7734415): 7 files, no impossibilities.
 
-# 6 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -273,14 +275,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 14 / storage = 123 B / avg = 8 B
-# current buf: size = 8162 B / used = 123 B / count = 14 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 15 / storage = 139 B / avg = 9 B
+# current buf: size = 8162 B / used = 139 B / count = 15 / avg = 9 B
 
-# strcache performance: lookups = 17 / hit rate = 17%
+# strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
-# Load=14/8192=0%, Rehash=0, Collisions=1/17=6%
-# Finished Make data base on Wed Aug  3 09:41:32 2022
+# Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
+# Finished Make data base on Wed Aug  3 18:20:21 2022
 
  
-make: *** No rule to make target 'all'.  Stop.
-

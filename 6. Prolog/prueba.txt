@@ -1,0 +1,3 @@
+DEF padre(x, y)
+DEF ancestro(X, Y) padre(X, Y)
+ASK ancestro(X, y)
