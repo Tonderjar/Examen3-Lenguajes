@@ -1,0 +1,27 @@
+No logre utilizar los futuros correctamente a tiempo.
+
+Para compilar se debe usar el comando siguiente:
+
+Para el de vectores:
+
+> scalac vectores.scala
+
+(no compila)
+
+Para el del path:
+
+> scalac path.scala
+
+(no existe)
+
+Para correr se debe utilizar el comando siguiente:
+
+Para el de vectores:
+
+> scala -cp . vectores
+
+Para el del path:
+
+> scala -cp . path
+
+-cp se utiliza por un problema de compatibilidad con Java.
